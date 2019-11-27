@@ -1,10 +1,3 @@
-<!--
- * @Author: guoxinggang<guoxinggang@gsaxns.com>
- * @Version: 1.0
- * @Date: 2019-11-21 15:21:57
- * @LastEditTime: 2019-11-25 12:43:30
- * @Description: 项目总结
- -->
 # 公司官网vue项目开发总结
 
 ### 项目中的问题及解决办法
@@ -522,13 +515,6 @@ module.exports = webpackConfig
 config文件下**index.js** 文件
 
 ```javascript
-/*
- * @Author: guoxinggang<guoxinggang@gsaxns.com>
- * @Version: 1.0
- * @Date: 2019-10-03 18:14:54
- * @LastEditTime: 2019-11-21 20:49:58
- * @Description:
- */
 'use strict'
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
