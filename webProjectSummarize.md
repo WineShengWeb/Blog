@@ -15,7 +15,7 @@
     <div class="header">
         <nav>
             <div class="name">
-                <h2>某某技术有限公司</h2>
+                <h2>某某科技有限公司</h2>
             </div>
             <ul class="nav">
                 <li v-for="(item,index) in nav" :key="index">
