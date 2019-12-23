@@ -1,6 +1,6 @@
 # TypeScript学习小结
 
-#### 关于TypeScript
+### 关于TypeScript
 
 TypeScript 是 JavaScript 的一个超集，主要提供了类型系统和对 ES6 的支持，它由 Microsoft 开发，代码开源于 GitHub 上。
 
@@ -8,9 +8,9 @@ TypeScript 是 JavaScript 的一个超集，主要提供了类型系统和对 ES
 
 ---
 
-#### 一、前言
+### 一、前言
 
-##### 1、什么是TypeScript
+#### 1、什么是TypeScript
 
 TypeScript 是 JavaScript 的一个超集，主要提供了 **类型系统** 和 **对 ES6 的支持**，它由 Microsoft 开发，代码开源于 GitHub 上。
 
@@ -51,7 +51,7 @@ TypeScript 是 JavaScript 的一个超集，主要提供了 **类型系统** 和
 - 集成到构建流程需要一些工作量
 - 可能和一些库结合的不是很完美
 
-##### 2、安装TypeScript
+#### 2、安装TypeScript
 
 安装命令：
 
@@ -66,7 +66,7 @@ tsc 文件名.ts
 node 文件名.js
 ```
 
-##### 3、TypeScriptDemo
+#### 3、TypeScriptDemo
 
 新建demo.ts文件，在里面键入以下代码：
 
@@ -103,9 +103,9 @@ node demo.js
 
 ---
 
-#### 二、基础
+### 二、基础
 
-##### 1、原始数据类型
+#### 1、原始数据类型
 
 JavaScript 的类型分为两种：原始数据类型（Primitive data types）和对象类型（Object types）。
 
@@ -311,7 +311,7 @@ something = 7;
 something.setName('Tom');
 ```
 
-##### 3、类型推论
+#### 3、类型推论
 
 如果没有明确的指定类型，那么 TypeScript 会依照类型推论（Type Inference）的规则推断出一个类型。
 
@@ -345,7 +345,7 @@ myFavoriteNumber = 'seven';
 myFavoriteNumber = 7;
 ```
 
-##### 4、联合类型
+#### 4、联合类型
 
 联合类型（Union Types）表示取值可以为多种类型中的一种。
 
@@ -406,7 +406,7 @@ console.log(myFavoriteNumber.length); // 编译时报错
 
 上例中，第二行的 myFavoriteNumber 被推断成了 string，访问它的 length 属性不会报错。而第四行的 myFavoriteNumber 被推断成了 number，访问它的 length 属性时就报错了。
 
-##### 5、对象的类型——接口
+#### 5、对象的类型——接口
 
 在 TypeScript 中，我们使用接口（Interfaces）来定义对象的类型。
 
@@ -611,7 +611,7 @@ tom.id = 89757;
 上例中，报错信息有两处，第一处是在对 tom 进行赋值的时候，没有给 id 赋值。
 第二处是在给 tom.id 赋值的时候，由于它是只读属性，所以报错了。
 
-##### 6、数组的类型
+#### 6、数组的类型
 
 在 TypeScript 中，数组类型有多种定义方式，比较灵活。
 
@@ -716,7 +716,7 @@ interface IArguments {
 let list: any[] = ['xcatliu', 25, { website: 'http://xcatliu.com' }];
 ```
 
-##### 7、函数的类型
+#### 7、函数的类型
 
 > 函数是 JavaScript 中的一等公民
 
@@ -866,8 +866,188 @@ let cat = buildName(undefined, 'Cat');
 ES6 中，可以使用 ...rest 的方式获取函数中的剩余参数（rest 参数）：
 
 ```typescript
-
+function push(array, ...items) {
+    items.forEach(function(item) {
+        array.push(item);
+    });
+}
+​
+let a = [];
+push(a, 1, 2, 3);
 ```
+
+事实上，items 是一个数组。所以我们可以用数组的类型来定义它：
+
+```typescript
+function push(array: any[], ...items: any[]) {
+    items.forEach(function(item) {
+        array.push(item);
+    });
+}
+​
+let a = [];
+push(a, 1, 2, 3);
+```
+
+注意，rest 参数只能是最后一个参数，关于 rest 参数，可以参考 ES6 中的 rest 参数。
+
+##### 7.6、重载
+
+重载允许一个函数接受不同数量或类型的参数时，作出不同的处理。
+
+比如，我们需要实现一个函数 **reverse**，输入数字 123 的时候，输出反转的数字 321，输入字符串 'hello' 的时候，输出反转的字符串 'olleh'。
+
+利用联合类型，我们可以这么实现：
+
+```typescript
+function reverse(x: number | string): number | string {
+    if (typeof x === 'number') {
+        return Number(x.toString().split('').reverse().join(''));
+    } else if (typeof x === 'string') {
+        return x.split('').reverse().join('');
+    }
+}
+```
+
+然而这样有一个缺点，就是不能够精确的表达，输入为数字的时候，输出也应该为数字，输入为字符串的时候，输出也应该为字符串。
+
+这时，我们可以使用重载定义多个 **reverse** 的函数类型：
+
+```typescript
+function reverse(x: number): number;
+function reverse(x: string): string;
+function reverse(x: number | string): number | string {
+    if (typeof x === 'number') {
+        return Number(x.toString().split('').reverse().join(''));
+    } else if (typeof x === 'string') {
+        return x.split('').reverse().join('');
+    }
+}
+```
+
+上例中，我们重复定义了多次函数 **reverse**，前几次都是函数定义，最后一次是函数实现。在编辑器的代码提示中，可以正确的看到前两个提示。
+
+注意，TypeScript 会优先从最前面的函数定义开始匹配，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。
+
+#### 8、类型断言
+
+类型断言（Type Assertion）可以用来手动指定一个值的类型。
+
+##### 8.1、语法
+
+```typescript
+<类型>值  或者  值 as 类型
+```
+
+在 tsx 语法（React 的 jsx 语法的 ts 版）中必须用后一种。
+
+**例子：将一个联合类型的变量指定为一个更加具体的类型**
+
+之前提到过，当 TypeScript 不确定一个联合类型的变量到底是哪个类型的时候，我们**只能访问此联合类型的所有类型里共有的属性或方法：**
+
+```typescript
+function getLength(something: string | number): number {
+    return something.length;
+}
+
+// index.ts(2,22): error TS2339: Property 'length' does not exist on type 'string | number'.
+//   Property 'length' does not exist on type 'number'.
+```
+
+而有时候，我们确实需要在还不确定类型的时候就访问其中一个类型的属性或方法，比如：
+
+```typescript
+function getLength(something: string | number): number {
+    if (something.length) {
+        return something.length;
+    } else {
+        return something.toString().length;
+    }
+}
+
+// index.ts(2,19): error TS2339: Property 'length' does not exist on type 'string | number'.
+//   Property 'length' does not exist on type 'number'.
+// index.ts(3,26): error TS2339: Property 'length' does not exist on type 'string | number'.
+//   Property 'length' does not exist on type 'number'.
+```
+
+上例中，获取 something.length 的时候会报错。
+此时可以使用类型断言，将 something 断言成 string：
+
+```typescript
+function getLength(something: string | number): number {
+    if ((<string>something).length) {
+        return (<string>something).length;
+    } else {
+        return something.toString().length;
+    }
+}
+```
+
+类型断言的用法如上，在需要断言的变量前加上 <Type> 即可。
+
+**类型断言不是类型转换，断言成一个联合类型中不存在的类型是不允许的：**
+
+```typescript
+function toBoolean(something: string | number): boolean {
+    return <boolean>something;
+}
+
+// index.ts(2,10): error TS2352: Type 'string | number' cannot be converted to type 'boolean'.
+//   Type 'number' is not comparable to type 'boolean'.
+```
+
+#### 9、声明文件
+
+当使用第三方库时，我们需要引用它的声明文件，才能获得对应的代码补全、接口提示等功能。
+
+##### 9.1、新语法索引
+
+由于本章涉及大量新语法，故在本章开头列出新语法的索引，方便大家在使用这些新语法时能快速查找到对应的讲解：
+
+- declare var 声明全局变量
+- declare function 声明全局方法
+- declare class 声明全局类
+- declare enum 声明全局枚举类型
+- declare namespace 声明（含有子属性的）全局对象
+- interface 和 type 声明全局类型
+- export 导出变量
+- export namespace 导出（含有子属性的）对象
+- export default ES6 默认导出
+- export = commonjs 导出模块
+- export as namespace UMD 库声明全局变量
+- declare global 扩展全局变量
+- declare module 扩展模块
+- /// < reference />  三斜线指令
+
+##### 9.2、什么是声明语句
+
+假如我们想使用第三方库 jQuery，一种常见的方式是在 html 中通过 < script > 标签引入 jQuery，然后就可以使用全局变量 $ 或 jQuery 了。
+
+我们通常这样获取一个 id 是 foo 的元素：
+
+```typescript
+$('#foo');
+// or
+jQuery('#foo');
+```
+
+但是在 ts 中，编译器并不知道 $ 或 jQuery 是什么东西1：
+
+```typescript
+jQuery('#foo');
+// ERROR: Cannot find name 'jQuery'.
+```
+
+这时，我们需要使用 declare var 来定义它的类型2：
+
+```typescript
+declare var jQuery: (selector: string) => any;
+
+jQuery('#foo');
+```
+
+上例中，declare var 并没有真的定义一个变量，只是定义了全局变量 jQuery 的类型，仅仅会用于编译时的检查，在编译结果中会被删除。它编译结果是：
 
 ```typescript
 
@@ -901,7 +1081,45 @@ ES6 中，可以使用 ...rest 的方式获取函数中的剩余参数（rest �
 
 ```
 
+```typescript
 
+```
+
+```typescript
+
+```
+
+```typescript
+
+```
+
+```typescript
+
+```
+
+```typescript
+
+```
+
+### 三、
+
+#### 1、
+
+```typescript
+
+```
+
+```typescript
+
+```
+
+```typescript
+
+```
+
+```typescript
+
+```
 
 
 ```typescript
