@@ -37,7 +37,7 @@ nvm list [available]
 - 2、安装，命令中的版本号可自定义，具体参考命令1查询出来的列表。
 
 ```node
-nvm install 12.14.0
+$ nvm install 12.14.0
 ```
 
 - 3、使用特定版本。
