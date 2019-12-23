@@ -14,7 +14,7 @@
 
 #### 安装
 
-- 1、双击安装文件 `nvm-setup.exe`；
+- 1、双击安装文件 `nvm-setup.exe`；<br/>
 ![demo](https://img2018.cnblogs.com/blog/775046/201904/775046-20190411160657751-1529010875.png)
 - 2、选择`nvm`安装路径；
 ![demo](https://img2018.cnblogs.com/blog/775046/201904/775046-20190411160816834-99504468.png)
