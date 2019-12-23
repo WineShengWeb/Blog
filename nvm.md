@@ -68,3 +68,4 @@ nvm uninstall 12.14.0
 - 12、`nvm version` ：显示`nvm`版本。`version`可简化为v。
 
 <font color="red">注：安装路径最好不要出现中文和空格。</font>
+
