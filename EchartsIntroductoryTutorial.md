@@ -2,7 +2,7 @@
  * @Author: guoxinggang<guoxinggang@gsaxns.com>
  * @Version: 1.0
  * @Date: 2019-09-11 14:49:18
- * @LastEditTime: 2019-09-17 17:05:51
+ * @LastEditTime: 2020-03-07 18:32:42
  * @Description: 
  -->
 # Echarts入门教程
@@ -64,7 +64,7 @@ require('echarts/lib/component/title');
 
 3. demo
 
-```
+```html
 <!DOCTYPE html>
 <html>
     <head>
