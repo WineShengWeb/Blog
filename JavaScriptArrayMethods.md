@@ -11,7 +11,7 @@
 
 数组后面追加一个元素,返回添加后的数组的长度，改变原数组
 
-```
+```javascript
 let arr = [1,2,3,4,5,6];
 console,log(arr.push(7)); //7
 console,log(arr); //1,2,3,4,5,6,7
