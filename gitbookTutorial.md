@@ -17,7 +17,7 @@
 
 GitBook 是一个基于 Node.js 的命令行工具，使用gitbook首先要下载安装 [node.js中文网](http://nodejs.cn/)，安装完成之后，你可以使用下面的命令来检验是否安装成功。
 
-```
+```node
 $  node -v
 v10.16.3
 ```
@@ -26,7 +26,7 @@ v10.16.3
 
 输入以下命令安装gitbook
 
-```
+```node
 $ npm install gitbook-cli -g
 ```
 
