@@ -2,7 +2,7 @@
  * @Author: guoxinggang<guoxinggang@gsaxns.com>
  * @Version: 1.0
  * @Date: 2019-10-31 16:03:57
- * @LastEditTime: 2019-10-31 16:50:53
+ * @LastEditTime: 2020-03-07 18:34:31
  * @Description: codebase
  -->
 # JavaScript常用实例代码库
@@ -34,7 +34,7 @@ trim: function (str, type) {
 
 ##### 1.2、字母大小写切换
 
-```
+```JavaScript
 /*type
  1:首字母大写
  2：首页母小写
