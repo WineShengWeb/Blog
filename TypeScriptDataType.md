@@ -2,12 +2,12 @@
  * @Author: guoxinggang<guoxinggang@gsaxns.com>
  * @Version: 1.0
  * @Date: 2019-10-16 17:21:18
- * @LastEditTime: 2019-10-17 15:10:04
+ * @LastEditTime: 2020-03-07 18:38:07
  * @Description: TypeScript数据类型
  -->
 # TypeScript数据类型
 
-Undefined :
+Undefined :Undefined类型
 Number:数值类型;
 string : 字符串类型;
 Boolean: 布尔类型；
