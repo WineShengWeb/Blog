@@ -4,6 +4,10 @@
 
 在服务器上部署 onlyoffice，具体步骤请[百度](https://www.baidu.com)
 
+##### 原理
+
+[onlyoffice 工作原理](https://www.jianshu.com/p/2d4f977ffeac)
+
 ##### 参数配置
 
 ```JavaScript
@@ -212,12 +216,9 @@
                 type: "desktop", // 文档打开的样式类型 'desktop or mobile'
                 document: {
                     fileType: "docx", // 文件类型
-                    key:
-                        "OVpYZjd5VE5BX1NNZGd1QTY5cXlCZzJHc0psdHUyempyZEZxTlBBOEsyWEg0NUtmOVZ5YWtuaFYzU0ZhWGVnWlozRGhQa2VManlXa1d4",
+                    key: "OVpYZjd5VE5",
                     title: "",
-                    url:
-                        "http://documentserver/files/data/" +
-                        this.$route.query.attachment,
+                    url: "https://example.com/url-to-example-document.docx",
                     permissions: {
                         // 权限配置
                         reader: true,
@@ -234,8 +235,7 @@
                     mode: "view", // 界面是编辑还是预览 view、edit
                     canAutosave: true,
                     canCoAuthoring: true,
-                    callbackUrl:
-                        "http://documentserver/index.php?mod=onlyoffice&do=savefile&path=OVpYZjd5VE5BX1NNZGd1QTY5cXlCZzJHc0psdHUyempyZEZxTlBBOEsyWEg0NUtmOVZ5YWtuaFYzU0ZhWGVnWlozRGhQa2VManlXa1d4&uid=0",
+                    callbackUrl: "https://example.com/url-to-callback.ashx",
                     createUrl: "", // 定义文档创建保存的绝对URL
                     lang: "zh-CN", // 语言
                     location: "zh-CN",
@@ -321,9 +321,7 @@ export default {
                     fileType: "docx", // 文件类型
                     key: this.key,
                     title: this.$route.query.name,
-                    url:
-                        "http://documentserver/files/data/" +
-                        this.$route.query.attachment,
+                    url: "https://example.com/url-to-example-document.docx",
                     permissions: {
                         // 权限配置
                         reader: true,
@@ -340,8 +338,7 @@ export default {
                     mode: "view", // 界面是编辑还是预览 view、edit
                     canAutosave: true,
                     canCoAuthoring: true,
-                    callbackUrl:
-                        "http://documentserver/index.php?mod=onlyoffice&do=savefile&path=OVpYZjd5VE5BX1NNZGd1QTY5cXlCZzJHc0psdHUyempyZEZxTlBBOEsyWEg0NUtmOVZ5YWtuaFYzU0ZhWGVnWlozRGhQa2VManlXa1d4&uid=0",
+                    callbackUrl: "https://example.com/url-to-callback.ashx",
                     createUrl: "", // 定义文档创建保存的绝对URL
                     lang: "zh-CN", // 语言
                     location: "zh-CN",
