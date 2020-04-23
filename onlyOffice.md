@@ -203,6 +203,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>ONLYOFFICE</title>
     </head>
+
     <body style="height: 100%; margin: 0;">
         <div id="placeholder" style="height: 100%"></div>
         <script
@@ -216,7 +217,7 @@
                 type: "desktop", // 文档打开的样式类型 'desktop or mobile'
                 document: {
                     fileType: "docx", // 文件类型
-                    key: "OVpYZjd5VE5",
+                    key: "OVpYZjd5VE",
                     title: "",
                     url: "https://example.com/url-to-example-document.docx",
                     permissions: {
