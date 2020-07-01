@@ -21,3 +21,12 @@ VUE_APP_URL = "http://192.168.1.106:8083/api/v1";
 // VUE_APP_URL = url;
 VUE_APP_URL = "http://192.168.12.108:8883/api/v1";
 ```
+
+##### 3、在 `axios` 中使用
+
+```js
+const service = axios.create({
+    baseURL: process.env.BASE_API, // 配置在config/prod.env里的baseApi
+    timeout: 5000, // 超时时间
+});
+```
