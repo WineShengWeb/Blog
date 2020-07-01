@@ -9,6 +9,7 @@ npm install --save normalize.css
 ##### 引入
 
 ```JavaScript
+// main.js
 import 'normalize.css/normalize.css'
 ```
 
