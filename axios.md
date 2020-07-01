@@ -1,13 +1,14 @@
 # axios 封装
 
-```JavaScript
-用的简书的markdown功能，不然贴出来的代码会变成一大坨。
-初用axios，我感觉要做下封装，大家都能用起来。
-这是我结合好多资料封装的，包含了请求前的处理，请求异样的处理(例如：超时，504等等)，代码里边的注释挺详细的，
-大家可以做下参考，也希望大家多多提出意见
+安装 `axios`
 
-// 封装axios请求，官网：https://www.npmjs.com/package/axios,axios还可以同时处理多个接口请求，这里先不做介绍
-// params是添加到url的请求字符串中的，用于get请求,例如shinyway.com?key=params
+```npm
+npm install axios
+```
+
+```JavaScript
+// 封装axios请求，官网：`https://www.npmjs.com/package/axios,axios`还可以同时处理多个接口请求，这里先不做介绍
+// params是添加到url的请求字符串中的，用于get请求,例如`shinyway.com?key=params`
 // 而data是添加到请求体（body）中的， 用于post请求,传递参数
 import axios from 'axios'
 import store from '@/store/index'
