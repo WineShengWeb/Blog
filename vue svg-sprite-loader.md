@@ -133,10 +133,14 @@ requireAll(req)
 
 ##### 4、引入 `main.js`
 
-将 `icons` 引入 `main.js` 文件中：
+将 `icons` 文件夹下的 `index.js` 引入 `main.js` 文件中：
 
 ```JavaScript
+// 错误引入，请将引入路径写完整，不要写成以下形式
 import '@/icons'
+
+// 正确引入完整路径，防止文件名冲突，找不到文件而导致图标不能显示
+import '@/icons/index'
 ```
 
 ##### 5、使用 `svg` 文件
