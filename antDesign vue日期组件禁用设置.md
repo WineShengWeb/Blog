@@ -4,20 +4,20 @@
 
 ```vue
 <a-date-picker
-    :key="key"
-    v-model="dateValue"
-    :value="moment(dateValue, attrBute.format)"
-    @change="onChange"
-    @openChange="openChange"
-    :format="attrBute.format"
-    :disabled="newdisabled == '' ? attrBute.disabled : newdisabled"
-    :allowClear="attrBute.allowClear"
-    :size="attrBute.size"
-    :showTime="attrBute.showTime"
-    :placeholder="getPlaceHolder()"
-    :disabledDate="getDisabledDate"
-    :getCalendarContainer="getContainer"
-    :locale="history"
+  :key="key"
+  v-model="dateValue"
+  :value="moment(dateValue, attrBute.format)"
+  @change="onChange"
+  @openChange="openChange"
+  :format="attrBute.format"
+  :disabled="newdisabled == '' ? attrBute.disabled : newdisabled"
+  :allowClear="attrBute.allowClear"
+  :size="attrBute.size"
+  :showTime="attrBute.showTime"
+  :placeholder="getPlaceHolder()"
+  :disabledDate="getDisabledDate"
+  :getCalendarContainer="getContainer"
+  :locale="history"
 />
 ```
 
@@ -98,7 +98,7 @@ data() {
                 type: 5, // 固定日期不可选
                 times: ["2020-04-15", "2020-04-10"]
             },
-                    {
+            {
                 type: 6 // 只有周末可以选
             }
         ]
