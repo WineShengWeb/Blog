@@ -1,18 +1,18 @@
 # sql 语句
 
-###### 1、说明：创建数据库
+#### 1、说明：创建数据库
 
 ```sql
 CREATE DATABASE database-name
 ```
 
-###### 2、说明：删除数据库
+#### 2、说明：删除数据库
 
 ```sql
 drop database dbname
 ```
 
-###### 3、说明：备份 sql server
+#### 3、说明：备份 sql server
 
 ```sql
 --- 创建 备份数据的 device
@@ -22,7 +22,7 @@ EXEC sp*addumpdevice 'disk', 'testBack', 'c:\mssql7backup\MyNwind_1.dat'
 BACKUP DATABASE pubs TO testBack
 ```
 
-###### 4、说明：创建新表
+#### 4、说明：创建新表
 
 ```sql
 create table tabname(col1 type1 [not null] [primary key],col2 type2 [not null],..)
@@ -32,13 +32,13 @@ A：create table tab_new like tab_old (使用旧表创建新表)
 B：create table tab_new as select col1,col2… from tab_old definition only
 ```
 
-###### 5、说明：删除新表
+#### 5、说明：删除新表
 
 ```sql
 drop table tabname
 ```
 
-###### 6、说明：增加一个列
+#### 6、说明：增加一个列
 
 ```sql
 Alter table tabname add column col type
@@ -46,13 +46,13 @@ Alter table tabname add column col type
 
 > 注：列增加后将不能删除。DB2 中列加上后数据类型也不能改变，唯一能改变的是增加 varchar 类型的长度。
 
-###### 7、说明：添加主键： Alter table tabname add primary key(col)
+#### 7、说明：添加主键： Alter table tabname add primary key(col)
 
 ```sql
 说明：删除主键： Alter table tabname drop primary key(col)
 ```
 
-###### 8、说明：创建索引：create [unique] index idxname on tabname(col….)
+#### 8、说明：创建索引：create [unique] index idxname on tabname(col….)
 
 ```sql
 删除索引：drop index idxname
@@ -60,13 +60,13 @@ Alter table tabname add column col type
 
 > 注：索引是不可更改的，想更改必须删除重新建。
 
-###### 9、说明：创建视图：create view viewname as select statement
+#### 9、说明：创建视图：create view viewname as select statement
 
 ```sql
 删除视图：drop view viewname
 ```
 
-###### 10、说明：几个简单的基本的 sql 语句
+#### 10、说明：几个简单的基本的 sql 语句
 
 ```sql
 选择：select \* from table1 where 范围
@@ -82,7 +82,7 @@ Alter table tabname add column col type
 最小：select min(field1) as minvalue from table1
 ```
 
-###### 11、说明：几个高级查询运算词
+#### 11、说明：几个高级查询运算词
 
 ```sql
 A： UNION 运算符
@@ -95,7 +95,7 @@ INTERSECT 运算符通过只包括 TABLE1 和 TABLE2 中都有的行并消除所
 
 > 注：使用运算词的几个查询结果行必须是一致的。
 
-###### 12、说明：使用外连接
+#### 12、说明：使用外连接
 
 ```sql
 A、left （outer） join：
@@ -107,7 +107,7 @@ C：full/cross （outer） join：
 全外连接：不仅包括符号连接表的匹配行，还包括两个连接表中的所有记录。
 ```
 
-###### 13、分组:Group by:
+#### 13、分组:Group by:
 
 ```sql
 一张表，一旦分组完成后，查询后只能得到组相关的信息。
@@ -116,7 +116,7 @@ C：full/cross （outer） join：
 在 selecte 统计函数中的字段，不能和普通的字段放在一起；
 ```
 
-###### 14、对数据库进行操作：
+#### 14、对数据库进行操作：
 
 ```sql
 分离数据库： sp_detach_db; 附加数据库：sp_attach_db 后接表明，附加需要完整的路径名 14.如何修改数据库的名称:
@@ -125,82 +125,82 @@ sp_renamedb 'old_name', 'new_name'
 
 #### 二、提升
 
-###### 1、说明：复制表(只复制结构,源表名：a 新表名：b) (Access 可用)
+#### 1、说明：复制表(只复制结构,源表名：a 新表名：b) (Access 可用)
 
 ```sql
 法一：select _ into b from a where 1<>1（仅用于 SQlServer）
 法二：select top 0 _ into b from a
 ```
 
-###### 2、说明：拷贝表(拷贝数据,源表名：a 目标表名：b) (Access 可用)
+#### 2、说明：拷贝表(拷贝数据,源表名：a 目标表名：b) (Access 可用)
 
 ```sql
 insert into b(a, b, c) select d,e,f from b;
 ```
 
-###### 3、说明：跨数据库之间表的拷贝(具体数据使用绝对路径) (Access 可用)
+#### 3、说明：跨数据库之间表的拷贝(具体数据使用绝对路径) (Access 可用)
 
 ```sql
 insert into b(a, b, c) select d,e,f from b in ‘具体数据库’ where 条件
 例子：..from b in '"&Server.MapPath(".")&"\data.mdb" &"' where..
 ```
 
-###### 4、说明：子查询(表名 1：a 表名 2：b)
+#### 4、说明：子查询(表名 1：a 表名 2：b)
 
 ```sql
 select a,b,c from a where a IN (select d from b ) 或者: select a,b,c from a where a IN (1,2,3)
 ```
 
-###### 5、说明：显示文章、提交人和最后回复时间
+#### 5、说明：显示文章、提交人和最后回复时间
 
 ```sql
 select a.title,a.username,b.adddate from table a,(select max(adddate) adddate from table where table.title=a.title) b
 ```
 
-###### 6、说明：外连接查询(表名 1：a 表名 2：b)
+#### 6、说明：外连接查询(表名 1：a 表名 2：b)
 
 ```sql
 select a.a, a.b, a.c, b.c, b.d, b.f from a LEFT OUT JOIN b ON a.a = b.c
 ```
 
-###### 7、说明：在线视图查询(表名 1：a )
+#### 7、说明：在线视图查询(表名 1：a )
 
 ```sql
 select _ from (SELECT a,b,c FROM a) T where t.a > 1;
 ```
 
-###### 8、说明：between 的用法,between 限制查询数据范围时包括了边界值,not between 不包括
+#### 8、说明：between 的用法,between 限制查询数据范围时包括了边界值,not between 不包括
 
 ```sql
 select _ from table1 where time between time1 and time2
 select a,b,c, from table1 where a not between 数值 1 and 数值 2
 ```
 
-###### 9、说明：in 的使用方法
+#### 9、说明：in 的使用方法
 
 ```sql
 select _ from table1 where a [not] in (‘值 1’,’值 2’,’值 4’,’值 6’)
 ```
 
-###### 10、说明：两张关联表，删除主表中已经在副表中没有的信息
+#### 10、说明：两张关联表，删除主表中已经在副表中没有的信息
 
 ```sql
 delete from table1 where not exists ( select _ from table2 where table1.field1=table2.field1 )
 ```
 
-###### 11、说明：四表联查问题：
+#### 11、说明：四表联查问题：
 
 ```sql
 select _ from a left inner join b on a.a=b.b right inner join c on a.a=c.c inner join d on a.a=d.d where .....
 ```
 
-###### 12、说明：日程安排提前五分钟提醒
+#### 12、说明：日程安排提前五分钟提醒
 
 ```sql
 SQL: select \_ from 日程安排 where datediff('minute',f 开始时间,getdate())>5
 ```
 
-###### 13、说明：一条 sql 语句搞定数据库分页
+#### 13、说明：一条 sql 语句搞定数据库分页
 
 ```sql
 select top 10 b.\* from (select top 20 主键字段,排序字段 from 表名 order by 排序字段 desc) a,表名 b where b.主键字段 = a.主键字段 order by a.排序字段
@@ -220,31 +220,31 @@ exec sp_executesql @sql
 select top 10 _ form table1 where 范围
 ```
 
-###### 15、说明：选择在每一组 b 值相同的数据中对应的 a 最大的记录的所有信息(类似这样的用法可以用于论坛每月排行榜,每月热销产品分析,按科目成绩排名,等等.)
+#### 15、说明：选择在每一组 b 值相同的数据中对应的 a 最大的记录的所有信息(类似这样的用法可以用于论坛每月排行榜,每月热销产品分析,按科目成绩排名,等等.)
 
 ```sql
 select a,b,c from tablename ta where a=(select max(a) from tablename tb where tb.b=ta.b)
 ```
 
-###### 16、说明：包括所有在 TableA 中但不在 TableB 和 TableC 中的行并消除所有重复行而派生出一个结果表
+#### 16、说明：包括所有在 TableA 中但不在 TableB 和 TableC 中的行并消除所有重复行而派生出一个结果表
 
 ```sql
 (select a from tableA ) except (select a from tableB) except (select a from tableC)
 ```
 
-###### 17、说明：随机取出 10 条数据
+#### 17、说明：随机取出 10 条数据
 
 ```sql
 select top 10 _ from tablename order by newid()
 ```
 
-###### 18、说明：随机选择记录
+#### 18、说明：随机选择记录
 
 ```sql
 select newid()
 ```
 
-###### 19、说明：删除重复记录
+#### 19、说明：删除重复记录
 
 ```sql
 1),delete from tablename where id not in (select max(id) from tablename group by col1,col2,...)
@@ -263,19 +263,19 @@ select max(column_b) from tablename group by column1,column2,...)
 alter table tablename drop column column_b
 ```
 
-###### 20、说明：列出数据库里所有的表名
+#### 20、说明：列出数据库里所有的表名
 
 ```sql
 select name from sysobjects where type='U' // U 代表用户
 ```
 
-###### 21、说明：列出表里的所有的列名
+#### 21、说明：列出表里的所有的列名
 
 ```sql
 select name from syscolumns where id=object*id('TableName')
 ```
 
-###### 22、说明：列示 type、vender、pcs 字段，以 type 字段排列，case 可以方便地实现多重选择，类似 select 中的 case。
+#### 22、说明：列示 type、vender、pcs 字段，以 type 字段排列，case 可以方便地实现多重选择，类似 select 中的 case。
 
 ```sql
 select type,sum(case vender when 'A' then pcs else 0 end),sum(case vender when 'C' then pcs else 0 end),sum(case vender when 'B' then pcs else 0 end) FROM tablename group by type
@@ -289,13 +289,13 @@ type vender pcs
 手机 C 3
 ```
 
-###### 23、说明：初始化表 table1
+#### 23、说明：初始化表 table1
 
 ```sql
 TRUNCATE TABLE table1
 ```
 
-###### 24、说明：选择从 10 到 15 的记录
+#### 24、说明：选择从 10 到 15 的记录
 
 ```sql
 select top 5 \* from (select top 15 _ from table order by id asc) table\*别名 order by id desc
@@ -303,7 +303,7 @@ select top 5 \* from (select top 15 _ from table order by id asc) table\*别名 
 
 #### 三、技巧
 
-###### 1、1=1，1=2 的使用，在 SQL 语句组合时用的较多
+#### 1、1=1，1=2 的使用，在 SQL 语句组合时用的较多
 
 ```sql
 “where 1=1” 是表示选择全部 “where 1=2”全部不选，
@@ -321,7 +321,7 @@ end
 set @strSQL = 'select count(\*) as Total from [' + @tblName + '] where 1=1 安定 '+ @strWhere
 ```
 
-###### 2、收缩数据库
+#### 2、收缩数据库
 
 ```sql
 --重建索引
@@ -332,26 +332,26 @@ DBCC SHRINKDB
 DBCC SHRINKFILE
 ```
 
-###### 3、压缩数据库
+#### 3、压缩数据库
 
 ```sql
 dbcc shrinkdatabase(dbname)
 ```
 
-###### 4、转移数据库给新用户以已存在用户权限
+#### 4、转移数据库给新用户以已存在用户权限
 
 ```sql
 exec sp_change_users_login 'update_one','newname','oldname'
 go
 ```
 
-###### 5、检查备份集
+#### 5、检查备份集
 
 ```sql
 RESTORE VERIFYONLY from disk='E:\dvbbs.bak'
 ```
 
-###### 6、修复数据库
+#### 6、修复数据库
 
 ```sql
 ALTER DATABASE [dvbbs] SET SINGLE_USER
@@ -362,7 +362,7 @@ ALTER DATABASE [dvbbs] SET MULTI_USER
 GO
 ```
 
-###### 7、日志清除
+#### 7、日志清除
 
 ```sql
 SET NOCOUNT ON
@@ -416,13 +416,13 @@ DROP TABLE DummyTrans
 SET NOCOUNT OFF
 ```
 
-###### 8、说明：更改某个表
+#### 8、说明：更改某个表
 
 ```sql
 exec sp_changeobjectowner 'tablename','dbo'
 ```
 
-###### 9、存储更改全部表
+#### 9、存储更改全部表
 
 ```sql
 CREATE PROCEDURE dbo.User_ChangeObjectOwnerBatch
@@ -455,7 +455,7 @@ deallocate curObject
 GO
 ```
 
-###### 10、SQL SERVER 中直接循环写入数据
+#### 10、SQL SERVER 中直接循环写入数据
 
 ```sql
 declare @i int
@@ -489,13 +489,13 @@ end
 
 #### 数据开发-经典
 
-###### 1.按姓氏笔画排序:
+#### 1.按姓氏笔画排序:
 
 ```sql
 Select _ From TableName Order By CustomerName Collate Chinese_PRC_Stroke_ci_as //从少到多
 ```
 
-###### 2.数据库加密:
+#### 2.数据库加密:
 
 ```sql
 select encrypt('原始密码')
@@ -505,7 +505,7 @@ select pwdencrypt('原始密码')
 select pwdcompare('原始密码','加密后密码') = 1--相同；否则不相同
 ```
 
-###### 3.取回表中字段:
+#### 3.取回表中字段:
 
 ```sql
 declare @list varchar(1000),
@@ -515,13 +515,13 @@ set @sql='select '+right(@list,len(@list)-1)+' from 表 A'
 exec (@sql)
 ```
 
-###### 4.查看硬盘分区:
+#### 4.查看硬盘分区:
 
 ```sql
 EXEC master..xp_fixeddrives
 ```
 
-###### 5.比较 A,B 表是否相等:
+#### 5.比较 A,B 表是否相等:
 
 ```sql
 if (select checksum_agg(binary_checksum(_)) from A)
@@ -532,7 +532,7 @@ else
 print '不相等'
 ```
 
-###### 6.杀掉所有的事件探察器进程:
+#### 6.杀掉所有的事件探察器进程:
 
 ```sql
 DECLARE hcforeach CURSOR GLOBAL FOR SELECT 'kill '+RTRIM(spid) FROM master.dbo.sysprocesses
@@ -540,7 +540,7 @@ WHERE program*name IN('SQL profiler',N'SQL 事件探查器')
 EXEC sp_msforeach_worker '?'
 ```
 
-###### 7.记录搜索:
+#### 7.记录搜索:
 
 ```sql
 开头到 N 条记录
@@ -586,13 +586,13 @@ set @s = 'select top 1 _ from T where pid not in (select top ' + str(@count-1) +
 print @s exec sp*executesql @s
 ```
 
-###### 9：获取当前数据库中的所有用户表
+#### 9：获取当前数据库中的所有用户表
 
 ```sql
 select Name from sysobjects where xtype='u' and status>=0
 ```
 
-###### 10：获取某一个表的所有字段
+#### 10：获取某一个表的所有字段
 
 ```sql
 select name from syscolumns where id=object*id('表名')
@@ -601,19 +601,19 @@ select name from syscolumns where id in (select id from sysobjects where type = 
 
 两种方式的效果相同
 
-###### 11：查看与某一个表相关的视图、存储过程、函数
+#### 11：查看与某一个表相关的视图、存储过程、函数
 
 ```sql
 select a.\* from sysobjects a, syscomments b where a.id = b.id and b.text like '%表名%'
 ```
 
-###### 12：查看当前数据库中所有存储过程
+#### 12：查看当前数据库中所有存储过程
 
 ```sql
 select name as 存储过程名称 from sysobjects where xtype='P'
 ```
 
-###### 13：查询用户创建的所有数据库
+#### 13：查询用户创建的所有数据库
 
 ```sql
 select * from master..sysdatabases D where sid not in(select sid from master..syslogins where name='sa')
@@ -621,14 +621,14 @@ select * from master..sysdatabases D where sid not in(select sid from master..sy
 select dbid, name AS DB*NAME from master..sysdatabases where sid <> 0x01
 ```
 
-###### 14：查询某一个表的字段和数据类型
+#### 14：查询某一个表的字段和数据类型
 
 ```sql
 select column_name,data_type from information_schema.columns
 where table_name = '表名'
 ```
 
-###### 15：不同服务器数据库之间的数据操作
+#### 15：不同服务器数据库之间的数据操作
 
 创建链接服务器
 
@@ -657,7 +657,7 @@ exec sp_dropserver 'ITSV ', 'droplogins '
 
 #### 连接远程/局域网数据(openrowset/openquery/opendatasource)
 
-###### 1、openrowset
+#### 1、openrowset
 
 查询示例
 
@@ -687,7 +687,7 @@ from openrowset( 'SQLOLEDB ', 'sql 服务器名 '; '用户名 '; '密码 ',数�
 on a.column1=b.column1
 ```
 
-###### openquery 用法需要创建一个连接
+#### openquery 用法需要创建一个连接
 
 首先创建一个连接创建链接服务器
 
@@ -718,7 +718,7 @@ FROM openquery(ITSV, 'SELECT _ FROM 数据库.dbo.表名 ') as a
 inner join 本地表 b on a.列 A=b.列 A
 ```
 
-###### 3、opendatasource/openrowset
+#### 3、opendatasource/openrowset
 
 ```sql
 SELECT _
@@ -755,7 +755,7 @@ SET NOCOUNT 为 OFF 时，返回计数
 
 #### SQLServer2000 同步复制技术实现步骤
 
-###### 一、 预备工作 1.发布服务器,订阅服务器都创建一个同名的 windows 用户,并设置相同的密码,做为发布快照文件夹的有效访问用户
+#### 一、 预备工作 1.发布服务器,订阅服务器都创建一个同名的 windows 用户,并设置相同的密码,做为发布快照文件夹的有效访问用户
 
 ```sql
 --管理工具
@@ -797,7 +797,7 @@ SET NOCOUNT 为 OFF 时，返回计数
 --如果你修改了 SQL 的端口,取消选择"动态决定端口",并输入对应的端口号
 ```
 
-###### 二、 正式配置
+#### 二、 正式配置
 
 1、配置发布服务器
 打开企业管理器，在发布服务器（B、C、D）上执行以下步骤:

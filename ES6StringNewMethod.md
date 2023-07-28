@@ -2,7 +2,7 @@
  * @Author: guoxinggang<guoxinggang@gsaxns.com>
  * @Version: 1.0
  * @Date: 2019-10-16 15:47:18
- * @LastEditTime: 2019-10-31 15:59:41
+ * @LastEditTime: 2023-02-28 15:30:38
  * @Description: ES6
  -->
 # ES6字符串新增的方法
@@ -20,7 +20,7 @@ if(str.indexOf("red")!= -1){
     alert(false)
 }
  
-ES2016新增 str.includes( val )    返回的是 true/false
+// ES2016新增 str.includes( val )    返回的是 true/false
 alert(str.includes("red"))     // 弹出 true
 ```
 
@@ -47,10 +47,10 @@ console.log(str2)   // abcabcabc
 #### 4、字符串填充：str.padStart( num , val)、str.padEnd( num , val )
 
 ```JavaScript
-前面填充：str.padStart( num , val) 
-后面填充：str.padEnd( num , val )
-    num:表示填充完后整个字符串的长度(原字符串的长度+要填充的字符串的长度)
-    val:表示要填充的字符串
+// 前面填充：str.padStart( num , val) 
+// 后面填充：str.padEnd( num , val )
+//     num:表示填充完后整个字符串的长度(原字符串的长度+要填充的字符串的长度)
+//     val:表示要填充的字符串
  
 let str = "123456789";
 let str2 = "abc"
